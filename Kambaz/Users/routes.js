@@ -94,11 +94,29 @@ export default function UserRoutes(app) {
 
 
     // Create course
+    // const createCourse = (req, res) => {
+    //     const currentUser = req.session["currentUser"];
+    //     const newCourse = courseDao.createCourse(req.body);
+    //     enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
+    //     res.json(newCourse);
+    // };
     const createCourse = (req, res) => {
         const currentUser = req.session["currentUser"];
-        const newCourse = courseDao.createCourse(req.body);
-        enrollmentsDao.enrollUserInCourse(currentUser._id, newCourse._id);
-        res.json(newCourse);
+        if (!currentUser) {
+            return res.status(401).json({ message: "Not logged in" });
+        }
+
+        const newCourse = {
+            ...req.body,
+            owner: currentUser._id,
+        };
+
+        const createdCourse = courseDao.createCourse(newCourse);
+
+        // 如果需要课程加入用户的enrollment
+        enrollmentsDao.enrollUserInCourse(currentUser._id, createdCourse._id);
+
+        res.json(createdCourse);
     };
 
 

@@ -17,10 +17,30 @@ import session from "express-session";
 const app = express()
 
 // Configure CORS to support cookies and restrict network access
+// app.use(
+//     cors({
+//         credentials: true,
+//         origin: process.env.NETLIFY_URL || "http://localhost:5173",
+//     })
+// );
+
+//手动了 manually configure CORS
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://gloria-react-web-app-cs5610-sp25.netlify.app",
+    "https://a5--gloria-react-web-app-cs5610-sp25.netlify.app"
+];
+
 app.use(
     cors({
         credentials: true,
-        origin: process.env.NETLIFY_URL || "http://localhost:5173",
+        origin: function (origin, callback) {
+            if (!origin || allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        }
     })
 );
 

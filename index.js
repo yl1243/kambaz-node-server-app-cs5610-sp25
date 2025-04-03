@@ -7,6 +7,8 @@ import cors from "cors";
 import UserRoutes from "./Kambaz/Users/routes.js";
 import CourseRoutes from "./Kambaz/Courses/routes.js";
 import ModuleRoutes from "./Kambaz/Modules/routes.js";
+import AssignmentRoutes from "./Kambaz/Assignments/routes.js";
+import EnrollmentsRoutes from "./Kambaz/Enrollments/routes.js";
 
 
 
@@ -74,6 +76,8 @@ Hello(app)
 UserRoutes(app);
 CourseRoutes(app);
 ModuleRoutes(app);
+AssignmentRoutes(app);
+EnrollmentsRoutes(app);
 
 
 

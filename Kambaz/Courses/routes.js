@@ -1,7 +1,7 @@
 import * as dao from "./dao.js";
 import * as modulesDao from "../Modules/dao.js";
-// import * as assignmentsDao from "../Assignments/dao.js";
-// import * as enrollmentsDao from "../Enrollments/dao.js";
+import * as assignmentsDao from "../Assignments/dao.js";
+import * as enrollmentsDao from "../Enrollments/dao.js";
 
 export default function CourseRoutes(app) {
 
@@ -44,7 +44,7 @@ export default function CourseRoutes(app) {
         res.send(newModule);
     });
 
-
+    // // HW5旧的 要加， py的不加
     // // get assignments by course id
     // app.get("/api/courses/:courseId/assignments", (req, res) => {
     //     const { courseId } = req.params;

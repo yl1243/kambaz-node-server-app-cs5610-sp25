@@ -38,8 +38,8 @@ export default function UserRoutes(app) {
 
     // find all users
     const findAllUsers = (req, res) => {
-        const allUsers = dao.findAllUsers();
-        res.json(allUsers);
+        // const allUsers = dao.findAllUsers();
+        // res.json(allUsers);
     };
 
 
@@ -131,15 +131,15 @@ export default function UserRoutes(app) {
 
     app.post("/api/users/signup", signup);
     app.post("/api/users/signin", signin);
-    // app.get("/api/users/:userId", findUserById);
+    app.get("/api/users/:userId", findUserById);
 
-    // app.get("/api/users", findAllUsers);
+    app.get("/api/users", findAllUsers);
     app.post("/api/users/profile", profile);
     app.put("/api/users/:userId", updateUser);
     app.post("/api/users/signout", signout);
     app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
     app.post("/api/users/current/courses", createCourse);
-    // app.post("/api/users", createUser);
-    // app.delete("/api/users/:userId", deleteUser);
+    app.post("/api/users", createUser);
+    app.delete("/api/users/:userId", deleteUser);
 
 }

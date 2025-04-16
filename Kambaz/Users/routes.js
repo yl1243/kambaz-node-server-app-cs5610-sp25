@@ -169,6 +169,7 @@ export default function UserRoutes(app) {
         res.send(status);
     };
 
+
     // unenroll user from course
     const unenrollUserFromCourse = async (req, res) => {
         let { uid, cid } = req.params;

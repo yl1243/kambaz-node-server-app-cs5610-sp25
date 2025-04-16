@@ -23,7 +23,8 @@ export const findUsersByPartialName = (partialName) => {
     });
 };
 
-
+// 在 dao.js 中添加 findUsersByRole
+export const findUsersByRole = (role) => model.find({ role });
 
 export const findAllUsers = () => model.find();
 
